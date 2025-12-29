@@ -1,0 +1,4 @@
+flask
+black
+isort
+flake8
