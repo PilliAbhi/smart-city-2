@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart City Complaint Portal</title>
+
+    <!-- CSS link goes here -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Report Infrastructure Issue</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/">
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Issue Type</label>
+        <select name="issue">
+            <option>Pothole</option>
+            <option>Broken Streetlight</option>
+            <option>Garbage Overflow</option>
+            <option>Water Leakage</option>
+        </select>
+
+        <label>Location</label>
+        <input type="text" name="location" required>
+
+        <button type="submit">Submit Complaint</button>
+    </form>
+
+    <hr>
+    <p>After submission you'll receive a confirmation email with a <strong>Reference ID</strong> and <strong>Verification Code</strong>.</p>
+    <p><a href="{{ url_for('verify') }}">Click here to verify your complaint</a></p>
+</div>
+
+</body>
+</html>

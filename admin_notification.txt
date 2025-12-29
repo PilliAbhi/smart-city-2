@@ -1,0 +1,10 @@
+New complaint submitted: {{ reference_id }}
+
+Name: {{ record['name'] }}
+Email: {{ record['email'] }}
+Issue: {{ record['issue'] }}
+Location: {{ record['location'] }}
+Submitted at: {{ submitted_at }}
+
+Reference ID: {{ reference_id }}
+Verification code: {{ record['token'] }}
